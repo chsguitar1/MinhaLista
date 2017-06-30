@@ -1,7 +1,9 @@
-package br.com.minhalista;
+package br.com.minhalista.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import br.com.minhalista.R;
 
 public class MainActivity extends AppCompatActivity {
 
