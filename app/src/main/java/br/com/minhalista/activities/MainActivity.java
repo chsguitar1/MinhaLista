@@ -16,20 +16,23 @@ import java.util.Date;
 import java.util.List;
 
 import br.com.minhalista.R;
-import br.com.minhalista.adapters.MeuAdapter;
+import br.com.minhalista.adapters.MeuListaAdapter;
+import br.com.minhalista.model.ItensLista;
 import br.com.minhalista.model.Lista;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView rcLista;
     FloatingActionButton fabAdd;
     List<Lista> minhasListas;
-    MeuAdapter adapter;
+    MeuListaAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         rcLista = (RecyclerView) findViewById(R.id.rc_lista);
         fabAdd = (FloatingActionButton) findViewById(R.id.fla_add);
+
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,17 +40,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         minhasListas = new ArrayList<>();
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rcLista.setLayoutManager(layoutManager);
 
         // Adiciona o adapter que irá anexar os objetos à lista.
         // Está sendo criado com lista vazia, pois será preenchida posteriormente.
-        adapter = new MeuAdapter(minhasListas);
+        adapter = new MeuListaAdapter(minhasListas,this);
         rcLista.setAdapter(adapter);
 
         // Configurando um dividr entre linhas, para uma melhor visualização.
         rcLista.addItemDecoration(
                 new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
 
     }
 
@@ -77,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         ladd.setDataLista(new Date());
         ladd.setNomeLista(nomeLista);
         ladd.setStatusLista(true);
+        ladd.setItensDaLista(new ArrayList<ItensLista>());
         adapter.atualizaLista(ladd);
 
     }

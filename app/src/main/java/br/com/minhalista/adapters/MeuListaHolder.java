@@ -10,11 +10,11 @@ import br.com.minhalista.R;
  * Created by Usuario on 30/06/2017.
  */
 
-public class MeuHolder extends RecyclerView.ViewHolder {
+public class MeuListaHolder extends RecyclerView.ViewHolder {
 
     public TextView descricao;
 
-    public MeuHolder(View itemView) {
+    public MeuListaHolder(View itemView) {
         super(itemView);
         descricao = (TextView) itemView.findViewById(R.id.tv_descricao_lista);
 
